@@ -14,7 +14,8 @@ defmodule Twittrix.Mixfile do
   #
   # Type "mix help compile.app" for more information
   def application do
-    [applications: [:logger, :extwitter]]
+    [applications: [:logger, :extwitter],
+     mod: {Twittrix, []}]
   end
 
   # Dependencies can be Hex packages:
@@ -29,7 +30,8 @@ defmodule Twittrix.Mixfile do
   defp deps do
     [
       {:extwitter, "~> 0.7.2"},
-      {:oauth, github: "tim/erlang-oauth"}
+      {:oauth, github: "tim/erlang-oauth"},
+      {:gen_stage, "~> 0.10.0"}
     ]
   end
 end
