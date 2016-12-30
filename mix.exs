@@ -14,7 +14,7 @@ defmodule Twittrix.Mixfile do
   #
   # Type "mix help compile.app" for more information
   def application do
-    [applications: [:logger, :extwitter],
+    [applications: [:gen_stage, :logger, :twittex, :nerves_uart],
      mod: {Twittrix, []}]
   end
 
@@ -29,9 +29,9 @@ defmodule Twittrix.Mixfile do
   # Type "mix help deps" for more examples and options
   defp deps do
     [
-      {:extwitter, "~> 0.7.2"},
-      {:oauth, github: "tim/erlang-oauth"},
-      {:gen_stage, "~> 0.10.0"}
+      {:gen_stage, "~> 0.8.0"},
+      {:twittex, "~> 0.2.3"},
+      {:nerves_uart, "~> 0.1.1"}
     ]
   end
 end

@@ -5,8 +5,9 @@ defmodule Twittrix do
     import Supervisor.Spec, warn: false
 
     children = [
-      worker(Twittrix.TweetSource, []),
-      worker(Twittrix.TweetProcessor, []),
+      worker(Nerves.UART, [[{:name, :UART}]]),
+      worker(Twittrix.TweetSource, ["#33c3 -RT"]),
+      worker(Twittrix.TextExtractor, []),
       worker(Twittrix.SerialSink, [])
     ]
 

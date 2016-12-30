@@ -1,16 +1,26 @@
+alias Experimental.GenStage
+
 defmodule Twittrix.TweetSource do
-  alias Experimental.GenStage
   use GenStage
 
-  def start_link do
-    GenStage.start_link(__MODULE__, :ok, name: __MODULE__)
+  def start_link(query) do
+    IO.puts "track: #{query}"
+    GenStage.start_link(__MODULE__, query, name: __MODULE__)
   end
 
-  def init(:ok) do
-    {:producer, :ok}
+  def init(query) do
+    {:producer, query}
   end
 
-  def handle_demand(demand, :ok) when demand > 0 do
-    {:noreplay}
+  def handle_demand(demand, query) when demand > 0 do
+    IO.puts "DEMANDED: #{demand}"
+    IO.puts "FETCHING 100"
+    result = twitter_search(query, 100)
+    {:noreply, result, query}
+  end
+
+  defp twitter_search(query, count) do
+    {:ok, %{"statuses" => result}} = Twittex.Client.search(query, count: count)
+    result
   end
 end
