@@ -6,7 +6,7 @@ defmodule Twittrix do
 
     children = [
       worker(Nerves.UART, [[{:name, :UART}]]),
-      worker(Twittrix.TweetSource, ["#33c3 -RT"]),
+      worker(Twittrix.TweetSource, [Application.get_env(:twittrix, :hashtag)]),
       worker(Twittrix.TextExtractor, []),
       worker(Twittrix.SerialSink, [])
     ]

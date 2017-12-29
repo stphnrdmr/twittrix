@@ -33,3 +33,5 @@ config :twittex,
   consumer_key: System.get_env("TWITTER_CONSUMER_KEY"),
   consumer_secret: System.get_env("TWITTER_CONSUMER_SECRET")
 
+config :twittrix,
+  hashtag: "#34c3 -RT"
