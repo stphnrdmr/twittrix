@@ -1,24 +1,11 @@
 # Twittrix
 
-**TODO: Add description**
+Twittrix is a client implementation for the arduino server software at
+[ngrash/max7219-ticker](https://github.com/ngrash/max7219-ticker). It downloads
+original tweets that contain the hashtag "#33c3" and sends them to a connected
+arduino running the ticker software.
 
-## Installation
+# Usage
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed as:
-
-  1. Add `twittrix` to your list of dependencies in `mix.exs`:
-
-    ```elixir
-    def deps do
-      [{:twittrix, "~> 0.1.0"}]
-    end
-    ```
-
-  2. Ensure `twittrix` is started before your application:
-
-    ```elixir
-    def application do
-      [applications: [:twittrix]]
-    end
-    ```
-
+Make sure to set both `TWITTER_CONSUMER_KEY` and `TWITTER_CONSUMER_SECRET`.
+These can be retrieved from your twitter app. Then run `mix` and you're running.
