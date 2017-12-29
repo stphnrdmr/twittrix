@@ -11,7 +11,6 @@ defmodule Twittrix.TextExtractor do
   end
 
   def handle_events(events, _from, tweets) do
-    IO.puts "RECEIVED: #{length(events)}"
     {:noreply, Enum.map(events, &(&1["text"])), tweets}
   end
 end
